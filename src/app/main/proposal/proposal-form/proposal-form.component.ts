@@ -11,6 +11,8 @@ export class ProposalFormComponent implements OnInit {
   selectForm: FormGroup;
   selectData: any = [];
 
+  projecttypes: string[] = ['โครงการใหม่', 'โครงการเดิม'];
+  
   constructor(
     private formBuilder: FormBuilder
   ) { }
@@ -24,7 +26,9 @@ export class ProposalFormComponent implements OnInit {
       product: "",
       activities: "",
       expense: "",
-      list: ""
+      list: "",
+      projecttypes: "",
+      totalbudget:""
     }
     this.selectForm = this.createSelectForm();
   }
@@ -37,7 +41,9 @@ export class ProposalFormComponent implements OnInit {
       product: [this.selectData.product, Validators.required],
       activities: [this.selectData.activities, Validators.required],
       expense: [this.selectData.expense, Validators.required],
-      list: [this.selectData.list, Validators.required]
+      list: [this.selectData.list, Validators.required],
+      projecttypes: [this.selectData.projecttypes, Validators.required],
+      totalbudget: [this.selectData.totalbudget, Validators.required]
     });
   }
 

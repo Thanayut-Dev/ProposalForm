@@ -86,6 +86,27 @@
         <textarea matInput formControlName="list" name="list" placeholder="Ex. It makes me feel..."></textarea>
       </mat-form-field>
     </div>
+
+    <div fxLayout="row">
+      <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+
+        <mat-label class="example-full-width" appearance="outline" fxFlex>ประเภทโครงการ</mat-label>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+          formControlName="projecttypes" name="projecttypes">
+          <mat-radio-button class="example-radio-button" *ngFor="let item of projecttypes" [value]="item">
+            {{item}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+        <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+          <mat-label>เงินงบประมาณรวม</mat-label>
+          <input matInput formControlName="totalbudget" name="totalbudget">
+        </mat-form-field>
+      </div>
+    </div>
+
   </form>
 
   <div fxLayout="row" fxLayoutAlign="center">

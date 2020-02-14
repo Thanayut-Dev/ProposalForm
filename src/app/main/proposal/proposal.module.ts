@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatDatepickerModule, MatTableModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatButtonModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDatepickerModule,
     MatFormFieldModule,
     MatTableModule,
+    MatRadioModule,
+
     MatIconModule,
     MatInputModule,
     MatListModule,
