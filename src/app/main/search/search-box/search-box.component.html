@@ -1,0 +1,89 @@
+<!-- <div fxLayout="column" fxLayout.gt-sm="row wrap">
+  <div fxFlex="100" fxFlex.gt-sm="100" fxLayoutAlign="center">1</div>
+  <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="center">2</div>
+  <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="center">3</div>
+  <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="center">4</div>
+  <div fxFlex="100" fxFlex.gt-sm="100" fxLayoutAlign="center">5</div>
+  <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">6</div>
+  <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">7</div>
+  <div fxFlex="100" fxFlex.gt-sm="100" fxLayoutAlign="center">8</div>
+  <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">9</div>
+  <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">10</div>
+</div> -->
+
+<div fxLayout="column">
+
+  <ng-content select=".titlengModel"></ng-content>
+
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="center">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput [(ngModel)]="searchData.firstname" name="firstname">
+      </mat-form-field>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="center">
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput [(ngModel)]="searchData.lastname" name="lastname">
+      </mat-form-field>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="center">
+      <mat-form-field appearance="fill">
+        <mat-label>Nick Name</mat-label>
+        <input matInput [(ngModel)]="searchData.nickname" name="nickname">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="center">
+    <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
+      <mat-form-field>
+        <mat-label>{{startDateLabel}}</mat-label>
+        <input matInput [matDatepicker]="startdate" [(ngModel)]="searchData.startDate" name="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startdate"></mat-datepicker-toggle>
+        <mat-datepicker #startdate></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
+      <mat-form-field>
+        <mat-label>{{endDateLabel}}</mat-label>
+        <input matInput [matDatepicker]="enddate" [(ngModel)]="searchData.endDate" name="endDate">
+        <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
+        <mat-datepicker #enddate></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef> Firstname </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef> Lastname </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nickname">
+      <th mat-header-cell *matHeaderCellDef> Nickname </th>
+      <td mat-cell *matCellDef="let element"> {{element.nickname}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+  </table>
+
+  <ng-content select=".contentngModel"></ng-content>
+
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center">
+  <button mat-raised-button color="primary" (click)="onSearchclick()">ค้นหา</button>
+</div>

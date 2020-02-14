@@ -1,0 +1,50 @@
+<div fxFlexlayout="column">
+
+  <ng-content select=".titleForm"></ng-content>
+
+  <form [formGroup]="dateFormGroup">
+    <div fxLayout="row" fxLayoutAlign="center">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstname" name="firstname">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center">
+      <mat-form-field fxFlex="75">
+        <mat-label>ประเภทรายจ่าย</mat-label>
+        <mat-select formControlName="expense" name="expense">
+          <mat-option>---</mat-option>
+          <mat-option *ngFor="let item of expense" [value]="item">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center">
+      <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
+        <mat-form-field>
+          <mat-label>{{dateStartLabelan}}</mat-label>
+          <input matInput [matDatepicker]="startDate" formControlName="dateStart" name="dateStart">
+          <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
+        <mat-form-field>
+          <mat-label>{{dateEndLabelan}}</mat-label>
+          <input matInput [matDatepicker]="endDate" formControlName="dateEnd" name="dateEnd">
+          <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+  <ng-content select=".contentForm"></ng-content>
+
+  <div fxLayout="row" fxLayoutAlign="center">
+    <button mat-raised-button color="primary" (click)="onsubmit()">SUBMIT</button>
+  </div>
+</div>
